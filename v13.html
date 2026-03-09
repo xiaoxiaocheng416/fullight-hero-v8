@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fullight Winning Pattern Report v11</title>
+  <title>Fullight Winning Pattern Report v23</title>
   <style>
     :root {
       --bg: #f4efe8;
@@ -167,7 +167,7 @@
     }
     .family-insights {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
       margin-top: 16px;
     }
@@ -175,9 +175,6 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-    }
-    .summary-cell.full {
-      grid-column: 1 / -1;
     }
     .summary-cell {
       padding: 12px 14px;
@@ -312,9 +309,12 @@
     }
     .segment-pills {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 8px;
       margin-bottom: 14px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
     }
     .seg-btn {
       border: 0;
@@ -325,6 +325,8 @@
       cursor: pointer;
       color: #fff;
       background: #7b5b44;
+      white-space: nowrap;
+      flex: 0 0 auto;
     }
     .table-intro {
       margin-bottom: 10px;
@@ -396,8 +398,185 @@
       margin-bottom: 18px;
     }
     .support-list li { margin-bottom: 8px; }
+    .playground {
+      margin-top: 6px;
+      margin-bottom: 18px;
+    }
+    .rule-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0 16px;
+    }
+    .rule-card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffaf3;
+      padding: 12px 14px;
+      font-size: 14px;
+    }
+    .playground-compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .compare-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffaf3;
+      padding: 14px;
+      display: grid;
+      gap: 12px;
+    }
+    .compare-card-head h3 {
+      font-size: 20px;
+      margin: 0;
+    }
+    .compare-card-video video {
+      width: 100%;
+      max-height: 360px;
+      border-radius: 14px;
+      background: #000;
+      border: 1px solid var(--line);
+      display: block;
+    }
+    .compare-card-points {
+      display: grid;
+      gap: 10px;
+    }
+    .point-row {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+    .point-row span {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      padding-top: 2px;
+    }
+    .point-row p {
+      margin: 0;
+      font-size: 14px;
+    }
+    .point-row.strong {
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+    }
+    .idea-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .idea-mini {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffaf3;
+      padding: 14px;
+    }
+    .idea-mini-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .idea-mini p {
+      margin: 0;
+      font-size: 14px;
+    }
+    .borrow-section {
+      margin-top: 18px;
+    }
+    .borrow-summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .borrow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+      justify-content: start;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .borrow-video-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffaf3;
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+    }
+    .borrow-video-shell video {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 14px;
+      background: #000;
+      border: 1px solid var(--line);
+      display: block;
+    }
+    .borrow-video-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .borrow-video-copy p {
+      margin: 6px 0 0;
+      font-size: 14px;
+    }
+    .borrow-link {
+      margin: 14px 0 0;
+    }
+    .borrow-link a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .lego-section {
+      margin-top: 18px;
+    }
+    .lego-stack {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .lego-card h3 {
+      font-size: 22px;
+    }
+    .lego-step {
+      width: 90px;
+      white-space: nowrap;
+    }
+    .lego-details {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+    .lego-details summary {
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      list-style: none;
+    }
+    .lego-details summary::-webkit-details-marker {
+      display: none;
+    }
+    .lego-details summary::after {
+      content: "展开";
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-left: 10px;
+    }
+    .lego-details[open] summary::after {
+      content: "收起";
+    }
     @media (max-width: 1180px) {
-      .hero-top, .summary-grid, .video-layout, .grid-2, .insight-grid, .family-summary, .family-grid, .family-insights {
+      .hero-top, .summary-grid, .video-layout, .grid-2, .insight-grid, .family-summary, .family-grid, .family-insights, .playground-compare-grid, .rule-grid, .idea-mini-grid, .borrow-summary, .borrow-grid {
         grid-template-columns: 1fr;
       }
       .video-header {
@@ -405,6 +584,9 @@
       }
       .video-left {
         position: static;
+      }
+      .point-row {
+        grid-template-columns: 1fr;
       }
       h1 { font-size: 34px; }
     }
@@ -419,11 +601,11 @@
         <img src="assets/flimeal_core7_overview_hero.webp" alt="Flimeal Core 7-Pack product hero">
       </article>
       <article class="card summary-band">
-        <div class="eyebrow">创作者先看这 5 点</div>
+        <div class="eyebrow">先看这 5 点</div>
         <div class="summary-grid">
           <div class="summary-cell full">
             <h3>核心判断</h3>
-            <p>前几秒先让人看懂 3 件事：怎么喝、喝起来哪里不一样、它适合什么时候喝。</p>
+            <p>前几秒要尽快证明 3 件事：这是什么、为什么不一样、适合什么时候喝。</p>
           </div>
           <div class="summary-cell">
             <h3>产品快照</h3>
@@ -458,13 +640,13 @@
       <h2>hungry.boyyyy：`Koreans do everything better` 这条 Pattern 怎么演变</h2>
       <div class="family-top">
         <div class="family-summary">
-        <div class="summary-cell">
-          <h3>这条 Pattern 的母版</h3>
-          <p>这 3 条不是各拍各的，而是同一个母版在连续试。母版一直没变：先用 Korea 对比打断，再当场 show pouch，再把传统蛋白粉拍成又粉又烦的更差旧方案。</p>
-        </div>
           <div class="summary-cell">
-            <h3>为什么它会赢</h3>
-            <p>它卖的不是 generic protein，而是一个更好玩、更好喝、更少清洗负担的 protein routine。</p>
+            <h3>一句话看懂这条 Pattern</h3>
+            <p>这 3 条不是各拍各的，而是同一个母版在连续试。母版一直没变：先用 Korea 对比打断，再当场 show pouch，再把传统蛋白粉拍成又粉又烦的更差旧方案。</p>
+          </div>
+          <div class="summary-cell">
+            <h3>为什么会卖的顺序</h3>
+            <ul><li>第一步先用一句挑衅 opening 把人停住，同时立刻把 pouch 拿到台前。</li><li>第二步马上做 prep demo，让观众不需要脑补这个产品到底怎么用。</li><li>第三步很快把旧方案拍成更烦的对照：洗 shaker、粉感、麻烦。</li><li>最后再把 variety / shipping / sale 讲成更容易下单的购买路径。</li></ul>
           </div>
         </div>
         <div class="family-grid">
@@ -475,8 +657,7 @@
                 <video controls preload="metadata" src="videos/7597583396218457358.mp4"></video>
               </div>
               <div class="family-metrics">
-                <span class="meta-badge">GMV $1,627.59</span>
-                <span class="meta-badge">订单 32</span>
+                <span class="meta-badge">播放 33.5万</span>
                 <span class="meta-badge">日期 2026-01-20</span>
               </div>
               <div class="family-copy">
@@ -484,8 +665,6 @@
                 <p class="family-opening">Why the fuck do Koreans do everything better than us?</p>
                 <div class="family-label">这次主要改了什么</div>
                 <p>先用 milk tea 口味做 taste proof，结尾直接落 sale + free shipping。</p>
-                <div class="family-label">这条让人学什么</div>
-                <p>把挑衅 opening 和 `sweet treat` 式口味想象先绑在一起。</p>
               </div>
               <div class="family-links">
                 <a class='family-link' href="https://www.tiktok.com/@hungry.boyyyy/video/7597583396218457358" target="_blank" rel="noreferrer">原始 TikTok</a>
@@ -499,8 +678,7 @@
                 <video controls preload="metadata" src="videos/7598270519867100429.mp4"></video>
               </div>
               <div class="family-metrics">
-                <span class="meta-badge">GMV $5,135.95</span>
-                <span class="meta-badge">订单 109</span>
+                <span class="meta-badge">播放 53.3万</span>
                 <span class="meta-badge">日期 2026-01-22</span>
               </div>
               <div class="family-copy">
@@ -508,8 +686,6 @@
                 <p class="family-opening">Why the fuck do Koreans do everything better than us?</p>
                 <div class="family-label">这次主要改了什么</div>
                 <p>把 pouch demo 往前提，并把 `不用洗 shaker` 的更差替代品对比拍得更重。</p>
-                <div class="family-label">这条让人学什么</div>
-                <p>这一条把同一个 angle 讲得最完整，所以 GMV 最高。</p>
               </div>
               <div class="family-links">
                 <a class='family-link' href="https://www.tiktok.com/@hungry.boyyyy/video/7598270519867100429" target="_blank" rel="noreferrer">原始 TikTok</a>
@@ -523,8 +699,7 @@
                 <video controls preload="metadata" src="videos/7601289359173651725.mp4"></video>
               </div>
               <div class="family-metrics">
-                <span class="meta-badge">GMV $1,922.91</span>
-                <span class="meta-badge">订单 43</span>
+                <span class="meta-badge">播放 20.3万</span>
                 <span class="meta-badge">日期 2026-01-30</span>
               </div>
               <div class="family-copy">
@@ -532,8 +707,6 @@
                 <p class="family-opening">Those fucking Koreans do everything better than us. God damn it.</p>
                 <div class="family-label">这次主要改了什么</div>
                 <p>先用 matcha 口味 proof，再把 `water or milk` 和 clean ingredients 补得更明确。</p>
-                <div class="family-label">这条让人学什么</div>
-                <p>同一条 family 继续换变量，不重造母版。</p>
               </div>
               <div class="family-links">
                 <a class='family-link' href="https://www.tiktok.com/@hungry.boyyyy/video/7601289359173651725" target="_blank" rel="noreferrer">原始 TikTok</a>
@@ -546,15 +719,15 @@
       <div class="family-insights">
         <div class="summary-cell">
           <h3>一直没变的骨架</h3>
-          <ul><li>开头都先打 `Koreans do everything better` 这种挑衅式 verbal hook。</li><li>前几秒都直接 show pouch，不让产品只停在嘴上。</li><li>中段都很快进入 `方便 / 不用洗 shaker / on-the-go`。</li><li>都会把传统蛋白粉拍成更差替代品：粉感、麻烦、洗杯子。</li><li>结尾都不是空 CTA，而是落到 variety / sale / shipping 这种购买路径。</li></ul>
+          <ul><li>开头都先打 `Koreans do everything better` 这种挑衅式 verbal hook。</li><li>前几秒都直接 show pouch，不让产品只停在嘴上。</li><li>中段都很快进入 `方便 / 不用洗 shaker / on-the-go`。</li></ul>
         </div>
         <div class="summary-cell">
-          <h3>这条 family 里先在变什么</h3>
-          <ul><li>先变的其实都是 hook：opening wording、粗口强度、第一秒的戏剧性动作。</li><li>visual hook 在变：是单纯倒进袋里，还是倒完立刻猛摇、立刻试喝。</li><li>hook 后第一个 proof 在变：先打哪个 flavor，先讲口感还是先讲方便。</li><li>hook 站住之后，才去微调 pain 顺序和 close 顺序。</li></ul>
+          <h3>这条 Pattern 里先在变什么</h3>
+          <ul><li>先变的其实都是 hook：opening wording、粗口强度、第一秒的戏剧性动作。</li><li>visual hook 在变：是单纯倒进袋里，还是倒完立刻猛摇、立刻试喝。</li><li>hook 后第一个 proof 在变：先打哪个 flavor，先讲口感还是先讲方便。</li></ul>
         </div>
-        <div class="summary-cell full">
-          <h3>如果要继续拍，先测 Hook</h3>
-          <ul><li>抄骨架，不抄粗口本身。</li><li>每次只换一个明显变量，不要整条重写。</li><li>下一条先测 hook，不先测中后段。</li><li>先测 visual hook、verbal hook、text hook 怎么一起更勾人、更 dramatic。</li><li>hook 站住了，再继续测 flavor lead、pain 顺序、close 顺序。</li></ul>
+        <div class="summary-cell">
+          <h3>下一条先测什么</h3>
+          <ul><li>抄骨架，不抄粗口本身。</li><li>每次只换一个明显变量，不要整条重写。</li><li>下一条先测 hook，不先测中后段。</li></ul>
         </div>
       </div>
     </section>
@@ -562,7 +735,6 @@
     <section class="section-intro">
       <div class="eyebrow">Hungry Boy Pattern 精拆</div>
       <h2>先拆这条 Pattern 里最值得学的 2 条</h2>
-      <p class="muted">先看这条 Pattern 怎么演变，再看其中最值得抄的 2 条。重点不是记住某一句粗口，而是看懂母版、变量和执行。</p>
     </section>
     
     <article class="video-card" id="video-detail-7598270519867100429">
@@ -585,7 +757,7 @@
             <span class="meta-badge">订单 109</span>
             <span class="meta-badge">日期 2026-01-22</span>
           </div>
-          <div class="segment-pills"><button class='seg-btn' data-target='video-7598270519867100429' data-start='0.00'>Pattern interrupt + show product 0.0s-5.24s</button><button class='seg-btn' data-target='video-7598270519867100429' data-start='5.24'>How-to + worse alternative 5.24s-15.64s</button><button class='seg-btn' data-target='video-7598270519867100429' data-start='15.64'>Taste proof + objection handling 15.64s-23.08s</button><button class='seg-btn' data-target='video-7598270519867100429' data-start='23.08'>购买路径 + friction reduction 23.08s-28.32s</button></div>
+          <div class="segment-pills"><button class='seg-btn' data-target='video-7598270519867100429' data-start='0.00'>0s-5s · Pattern interrupt + show product</button><button class='seg-btn' data-target='video-7598270519867100429' data-start='5.24'>5s-16s · How-to + worse alternative</button><button class='seg-btn' data-target='video-7598270519867100429' data-start='15.64'>16s-23s · Taste proof + objection handling</button><button class='seg-btn' data-target='video-7598270519867100429' data-start='23.08'>23s-28s · 购买路径 + friction reduction</button></div>
           <div class="insight-grid">
             <div class='insight-card hook-note'><div class='note-label'>开口钩</div><div class='fact-row'><div class='fact-label'>动作 / 视觉</div><div class='fact-value'>他一边说话，一边把牛奶倒进黑芝麻口味的袋子里，再把产品往镜头前推。</div></div><div class='fact-row'><div class='fact-label'>屏幕文字</div><div class='fact-value'>22g protein / FLIMEAL BLACK SESAME visible on pack</div></div><div class='fact-row'><div class='fact-label'>原句口播</div><div class='fact-value'>Why the fuck do Koreans do everything better than us? This is Korea&#x27;s number one protein brand and it&#x27;s fucking insane.</div></div><div class='fact-row'><div class='fact-label'>声音</div><div class='fact-value'>倒液体声，加上非常直接和有攻击性的口播语气。</div></div><div class='fact-row'><div class='fact-label'>为什么会停下</div><div class='fact-value'>真正让人停下来的，不只是挑衅口播，而是口播发生时产品 demo 也已经在同时进行。</div></div></div>
             <div class="insight-card strong">
@@ -598,12 +770,11 @@
             </div>
             <div class="insight-card">
               <div class="note-label">接下来要复制什么</div>
-              <p><strong>务必：</strong>真正值得抄的是 hook 里一定要带产品 demo，以及后面对旧方案烦感的对比。不要把它磨平为 generic protein ad。<br><strong>注意：</strong>这类 family 的力度很强，但 tone 很看 creator 本人。真正可迁移的是结构，不是原句粗口本身。</p>
+              <p><strong>务必：</strong>真正值得抄的是 hook 里一定要带产品 demo，以及后面对旧方案烦感的对比。不要把它磨平为 generic protein ad。<br><strong>注意：</strong>这类 Pattern 的力度很强，但 tone 很看 creator 本人。真正可迁移的是结构，不是原句粗口本身。</p>
             </div>
           </div>
           <div class="table-intro">
-            <div class="table-title">按有意义的 beat 来拆，不按碎句硬切</div>
-            <div class="muted">这一版先把断句修正，再按真正有意义的 beat 来看：画面动作、屏幕文字、原句口播、声音，一起决定这一段在卖什么。</div>
+            <div class="table-title">按有意义的 beat 来拆</div>
           </div>
           <div class="table-wrap">
             <table class="beat-table">
@@ -641,7 +812,7 @@
             <span class="meta-badge">订单 43</span>
             <span class="meta-badge">日期 2026-01-30</span>
           </div>
-          <div class="segment-pills"><button class='seg-btn' data-target='video-7601289359173651725' data-start='0.00'>Pattern interrupt + show product 0.0s-3.22s</button><button class='seg-btn' data-target='video-7601289359173651725' data-start='3.22'>Prep demo + flavor proof 3.22s-11.28s</button><button class='seg-btn' data-target='video-7601289359173651725' data-start='11.28'>Pain relief + taste contrast 11.28s-24.56s</button><button class='seg-btn' data-target='video-7601289359173651725' data-start='24.56'>购买路径 + trust close 24.56s-35.12s</button></div>
+          <div class="segment-pills"><button class='seg-btn' data-target='video-7601289359173651725' data-start='0.00'>0s-3s · Pattern interrupt + show product</button><button class='seg-btn' data-target='video-7601289359173651725' data-start='3.22'>3s-11s · Prep demo + flavor proof</button><button class='seg-btn' data-target='video-7601289359173651725' data-start='11.28'>11s-25s · Pain relief + taste contrast</button><button class='seg-btn' data-target='video-7601289359173651725' data-start='24.56'>25s-35s · 购买路径 + trust close</button></div>
           <div class="insight-grid">
             <div class='insight-card hook-note'><div class='note-label'>开口钩</div><div class='fact-row'><div class='fact-label'>动作 / 视觉</div><div class='fact-value'>一上来就把牛奶直接倒进绿色袋装里，接着猛摇袋子，再立刻试喝。</div></div><div class='fact-row'><div class='fact-label'>原句口播</div><div class='fact-value'>Those fucking Koreans do everything better than us. God damn it.</div></div><div class='fact-row'><div class='fact-label'>声音</div><div class='fact-value'>先是倒牛奶声，再是很响的摇袋声。</div></div><div class='fact-row'><div class='fact-label'>为什么会停下</div><div class='fact-value'>真正停住人的，是强 opening 和异常直接的 prep demo 同时发生，而不是只有一句粗口。</div></div></div>
             <div class="insight-card strong">
@@ -658,8 +829,7 @@
             </div>
           </div>
           <div class="table-intro">
-            <div class="table-title">按有意义的 beat 来拆，不按碎句硬切</div>
-            <div class="muted">这一版先把断句修正，再按真正有意义的 beat 来看：画面动作、屏幕文字、原句口播、声音，一起决定这一段在卖什么。</div>
+            <div class="table-title">按有意义的 beat 来拆</div>
           </div>
           <div class="table-wrap">
             <table class="beat-table">
@@ -684,13 +854,13 @@
       <h2>跨 creator：具体场景切入 + 宏观营养 + crunch proof 这条 Pattern</h2>
       <div class="family-top">
         <div class="family-summary">
-        <div class="summary-cell">
-          <h3>这条 Pattern 的母版</h3>
-          <p>这条 Pattern 不是靠某一个 creator 的 personality 在赢，而是不同 creator 都在重复同一个骨架：先把一个具体生活场景拉进来，再用 macros 站住，再用 crunch / flavor 把它讲得真好喝，最后把第一次下单路径讲清楚。</p>
-        </div>
           <div class="summary-cell">
-            <h3>为什么它会赢</h3>
-            <p>它同时解决两件事：先让人觉得这东西营养上站得住，再让人觉得它真的不是 boring protein，而且真的能进日常。</p>
+            <h3>一句话看懂这条 Pattern</h3>
+            <p>这条 Pattern 不是靠某一个 creator 的 personality 在赢，而是不同 creator 都在重复同一个骨架：先把一个具体生活场景拉进来，再用 macros 站住，再用 crunch / flavor 把它讲得真好喝，最后把第一次下单路径讲清楚。</p>
+          </div>
+          <div class="summary-cell">
+            <h3>为什么会卖的顺序</h3>
+            <ul><li>第一步先把一个具体时刻讲清楚：训练后、忙的时候、临时补一顿、通勤前。</li><li>第二步很快给出宏观营养，让产品先看起来合理，不像 gimmick snack。</li><li>第三步用 crunch / flavor 把口感讲实，让它不像 boring protein。</li><li>最后把 variety 或 first-buy 路径讲清楚，让第一次下单没那么冒险。</li></ul>
           </div>
         </div>
         <div class="family-grid">
@@ -701,8 +871,7 @@
                 <video controls preload="metadata" src="videos/7603181518701202701.mp4"></video>
               </div>
               <div class="family-metrics">
-                <span class="meta-badge">GMV $16,362.20</span>
-                <span class="meta-badge">订单 346</span>
+                <span class="meta-badge">播放 1.1M</span>
                 <span class="meta-badge">日期 2026-02-04</span>
               </div>
               <div class="family-copy">
@@ -710,8 +879,6 @@
                 <p class="family-opening">I just worked out, let&#x27;s have a protein shake, today we&#x27;re doing 17 grain.</p>
                 <div class="family-label">这次主要改了什么</div>
                 <p>先用训练后场景 + 咀嚼声 + 宏观营养一起开场。</p>
-                <div class="family-label">这条让人学什么</div>
-                <p>这条把营养合法性和口感兴趣一起立住，是这类 Pattern 的最强代表。</p>
               </div>
               <div class="family-links">
                 <a class='family-link' href="https://www.tiktok.com/@clarahyee/video/7603181518701202701" target="_blank" rel="noreferrer">原始 TikTok</a>
@@ -725,8 +892,7 @@
                 <video controls preload="metadata" src="videos/7604539384553131295.mp4"></video>
               </div>
               <div class="family-metrics">
-                <span class="meta-badge">GMV $5,611.40</span>
-                <span class="meta-badge">订单 122</span>
+                <span class="meta-badge">播放 44.8万</span>
                 <span class="meta-badge">日期 2026-02-08</span>
               </div>
               <div class="family-copy">
@@ -734,8 +900,6 @@
                 <p class="family-opening">This is what I eat whenever I don&#x27;t want to have an actual meal, but don&#x27;t want to touch anything unhealthy.</p>
                 <div class="family-label">这次主要改了什么</div>
                 <p>先用倒进袋里的 prep demo，再把它框成一个健康 fallback meal 方案。</p>
-                <div class="family-label">这条让人学什么</div>
-                <p>这条说明同一个 Pattern 不一定要靠训练场景，也可以靠 how-to + healthy fallback 去赢。</p>
               </div>
               <div class="family-links">
                 <a class='family-link' href="https://www.tiktok.com/@tho_ph25/video/7604539384553131295" target="_blank" rel="noreferrer">原始 TikTok</a>
@@ -749,8 +913,7 @@
                 <video controls preload="metadata" src="videos/7590648642298531085.mp4"></video>
               </div>
               <div class="family-metrics">
-                <span class="meta-badge">GMV $2,287.80</span>
-                <span class="meta-badge">订单 48</span>
+                <span class="meta-badge">播放 50.7万</span>
                 <span class="meta-badge">日期 2026-01-02</span>
               </div>
               <div class="family-copy">
@@ -758,8 +921,6 @@
                 <p class="family-opening">22 grams of protein, 160 calories and only two grams of sugar. I just got back from Pilates.</p>
                 <div class="family-label">这次主要改了什么</div>
                 <p>先用 Pilates 场景和 black sesame 评论热度切入，再把 crunch、variety、portable 全部接进去。</p>
-                <div class="family-label">这条让人学什么</div>
-                <p>这条说明同一个 Pattern 也可以从训练后场景加评论验证切入，不一定非得从第一口就讲 meal fallback。</p>
               </div>
               <div class="family-links">
                 <a class='family-link' href="https://www.tiktok.com/@clarahyee/video/7590648642298531085" target="_blank" rel="noreferrer">原始 TikTok</a>
@@ -772,15 +933,15 @@
       <div class="family-insights">
         <div class="summary-cell">
           <h3>一直没变的骨架</h3>
-          <ul><li>开头都会很快告诉你这是什么场景：训练后、忙的时候、临时补一顿、带娃时的 quick shake。</li><li>前面都会很快给 protein / calories / sugar 这类数字，让产品先站住。</li><li>crunch / flavor 一定会出现，不让它只剩营养话术。</li><li>product show 都很早，不会拖到后面才解释怎么喝。</li><li>结尾都会把 first-buy 路径讲清楚：买 variety 或先用低风险方式试。</li></ul>
+          <ul><li>开头都会很快告诉你这是什么场景：训练后、忙的时候、临时补一顿、带娃时的 quick shake。</li><li>前面都会很快给 protein / calories / sugar 这类数字，让产品先站住。</li><li>crunch / flavor 一定会出现，不让它只剩营养话术。</li></ul>
         </div>
         <div class="summary-cell">
-          <h3>这条 family 里先在变什么</h3>
-          <ul><li>先变的也是 hook：是先 chew / crunch，还是先直接 pour into pouch，还是先用带娃这种生活画面打断。</li><li>verbal hook 在变：先讲 `I just worked out`，还是先讲 `this is what I eat when...`，还是先讲忙乱的生活场景。</li><li>hook 站住后，才继续变 macro 顺序、satiety framing、fallback meal framing、variety close。</li><li>这条 Pattern 的变化不靠强 personality，而是靠更清楚的场景、proof 排序和 prep friction 处理。</li></ul>
+          <h3>这条 Pattern 里先在变什么</h3>
+          <ul><li>先变的也是 hook：是先 chew / crunch，还是先直接 pour into pouch，还是先用带娃这种生活画面打断。</li><li>verbal hook 在变：先讲 `I just worked out`，还是先讲 `this is what I eat when...`，还是先讲忙乱的生活场景。</li><li>hook 站住后，才继续变 macro 顺序、satiety framing、fallback meal framing、variety close。</li></ul>
         </div>
-        <div class="summary-cell full">
-          <h3>如果要继续拍，先测 Hook</h3>
-          <ul><li>这条 Pattern 也先测 hook，不先改中后段。</li><li>先测 visual hook：先 chew / crunch，还是先 pour-into-pouch，还是先用明显生活场景挡住滚动。</li><li>先测 verbal hook：先讲 workout 场景，还是先讲 healthy fallback meal，还是先讲忙乱情境。</li><li>只有前面站住了，才继续调 variety 路径、口味顺序和 on-the-go 收口。</li></ul>
+        <div class="summary-cell">
+          <h3>下一条先测什么</h3>
+          <ul><li>这条 Pattern 也先测 hook，不先改中后段。</li><li>先测 visual hook：先 chew / crunch，还是先 pour-into-pouch，还是先用明显生活场景挡住滚动。</li><li>先测 verbal hook：先讲 workout 场景，还是先讲 healthy fallback meal，还是先讲忙乱情境。</li></ul>
         </div>
       </div>
     </section>
@@ -788,7 +949,6 @@
     <section class="section-intro">
       <div class="eyebrow">跨 Creator Pattern 精拆</div>
       <h2>再拆这条跨 creator 的 2 条代表作</h2>
-      <p class="muted">这一组不是靠某一个 creator 的 tone 赢，而是不同 creator 都在重复同一个骨架：场景先立住，营养再站住，crunch 再把口感讲实。</p>
     </section>
     
     <article class="video-card" id="video-detail-7603181518701202701">
@@ -811,7 +971,7 @@
             <span class="meta-badge">订单 346</span>
             <span class="meta-badge">日期 2026-02-04</span>
           </div>
-          <div class="segment-pills"><button class='seg-btn' data-target='video-7603181518701202701' data-start='0.00'>Hook + show product + 宏观营养 0.0s-18.2s</button><button class='seg-btn' data-target='video-7603181518701202701' data-start='18.20'>Flavor proof + crunch 差异点 18.2s-35.2s</button><button class='seg-btn' data-target='video-7603181518701202701' data-start='35.20'>Use case + 场景适配 35.2s-47.4s</button><button class='seg-btn' data-target='video-7603181518701202701' data-start='47.40'>购买路径 + 降低选择风险 47.4s-65.6s</button></div>
+          <div class="segment-pills"><button class='seg-btn' data-target='video-7603181518701202701' data-start='0.00'>0s-18s · Hook + show product + 宏观营养</button><button class='seg-btn' data-target='video-7603181518701202701' data-start='18.20'>18s-35s · Flavor proof + crunch 差异点</button><button class='seg-btn' data-target='video-7603181518701202701' data-start='35.20'>35s-47s · Use case + 场景适配</button><button class='seg-btn' data-target='video-7603181518701202701' data-start='47.40'>47s-66s · 购买路径 + 降低选择风险</button></div>
           <div class="insight-grid">
             <div class='insight-card hook-note'><div class='note-label'>开口钩</div><div class='fact-row'><div class='fact-label'>动作 / 视觉</div><div class='fact-value'>她还没开始解释，就已经把包装袋拿在嘴边咀嚼，并靠近镜头，让产品先显得有效且可食用。</div></div><div class='fact-row'><div class='fact-label'>屏幕文字</div><div class='fact-value'>Korean Protein Shake / 17 Grains with crunchy protein balls</div></div><div class='fact-row'><div class='fact-label'>原句口播</div><div class='fact-value'>I just worked out, let&#x27;s have a protein shake, today we&#x27;re doing 17 grain.</div></div><div class='fact-row'><div class='fact-label'>声音</div><div class='fact-value'>一开始就有很明显的咀嚼 / 嘎吱声。</div></div><div class='fact-row'><div class='fact-label'>为什么会停下</div><div class='fact-value'>咀嚼声让液体袋装饮料意外地显得很好吃，训练后这句口播又立刻告诉你这是为一天中的哪个时刻准备的。</div></div></div>
             <div class="insight-card strong">
@@ -828,8 +988,7 @@
             </div>
           </div>
           <div class="table-intro">
-            <div class="table-title">按有意义的 beat 来拆，不按碎句硬切</div>
-            <div class="muted">这一版先把断句修正，再按真正有意义的 beat 来看：画面动作、屏幕文字、原句口播、声音，一起决定这一段在卖什么。</div>
+            <div class="table-title">按有意义的 beat 来拆</div>
           </div>
           <div class="table-wrap">
             <table class="beat-table">
@@ -867,7 +1026,7 @@
             <span class="meta-badge">订单 122</span>
             <span class="meta-badge">日期 2026-02-08</span>
           </div>
-          <div class="segment-pills"><button class='seg-btn' data-target='video-7604539384553131295' data-start='0.00'>Hook + show product + problem fit 0.0s-10.32s</button><button class='seg-btn' data-target='video-7604539384553131295' data-start='10.32'>How-to + friction removal + crunch proof 10.32s-18.88s</button><button class='seg-btn' data-target='video-7604539384553131295' data-start='18.88'>Taste proof + macro proof + repeat use 18.88s-28.16s</button></div>
+          <div class="segment-pills"><button class='seg-btn' data-target='video-7604539384553131295' data-start='0.00'>0s-10s · Hook + show product + problem fit</button><button class='seg-btn' data-target='video-7604539384553131295' data-start='10.32'>10s-19s · How-to + friction removal + crunch proof</button><button class='seg-btn' data-target='video-7604539384553131295' data-start='18.88'>19s-28s · Taste proof + macro proof + repeat use</button></div>
           <div class="insight-grid">
             <div class='insight-card hook-note'><div class='note-label'>开口钩</div><div class='fact-row'><div class='fact-label'>动作 / 视觉</div><div class='fact-value'>镜头一开始就把牛奶直接倒进袋里，不需要观众自己脑补这个产品怎么用。</div></div><div class='fact-row'><div class='fact-label'>屏幕文字</div><div class='fact-value'>my favorite way to increase my protein intake!!</div></div><div class='fact-row'><div class='fact-label'>原句口播</div><div class='fact-value'>This is what I eat whenever I don&#x27;t want to have an actual meal, but don&#x27;t want to touch anything unhealthy.</div></div><div class='fact-row'><div class='fact-label'>声音</div><div class='fact-value'>牛奶倒进袋里的清晰液体声。</div></div><div class='fact-row'><div class='fact-label'>为什么会停下</div><div class='fact-value'>你在她解释之前就已经懂这个 format 了，而字幕又把它框成一个日常补蛋白习惯，不是 random novelty snack。</div></div></div>
             <div class="insight-card strong">
@@ -884,8 +1043,7 @@
             </div>
           </div>
           <div class="table-intro">
-            <div class="table-title">按有意义的 beat 来拆，不按碎句硬切</div>
-            <div class="muted">这一版先把断句修正，再按真正有意义的 beat 来看：画面动作、屏幕文字、原句口播、声音，一起决定这一段在卖什么。</div>
+            <div class="table-title">按有意义的 beat 来拆</div>
           </div>
           <div class="table-wrap">
             <table class="beat-table">
@@ -905,28 +1063,270 @@
     
     
 
-    <section class="grid-2">
-      <article class="card">
-        <div class="eyebrow">这些 Pattern 的共同规律</div>
-        <h2>目前已经被验证的 4 个规律</h2>
-        <ul>
-          <li>先赢 hook，再谈 proof。第一秒站不住，后面再好也没人看到。</li>
-          <li>最强 hook 都不是一句文案，而是 `visual + verbal + text` 一起工作。</li>
-          <li>真正稳定的 proof 是 `show the product + sensory proof`，不是空讲卖点。</li>
-          <li>最后都要落到购买路径：怎么买更稳、为什么现在买阻力更低。</li>
-        </ul>
-      </article>
-      <article class="card">
-        <div class="eyebrow">下一轮先测 Hook</div>
-        <h2>接下来所有 Pattern 都先从这里下手</h2>
-        <ul>
-          <li>先测 verbal hook：同一个 Korea angle，哪句最 sharp、最能停住人。</li>
-          <li>先测 visual hook：倒进袋里之后，是立刻猛摇、立刻试喝，还是立刻把袋子推近镜头。</li>
-          <li>先测 text hook：要不要补一层更快让人懂的文字 framing。</li>
-          <li>只有 hook 站住了，才继续测 flavor lead、pain 顺序、sale / shipping close。</li>
-        </ul>
-      </article>
+    <section class="card playground">
+      <div class="eyebrow">下一条怎么搭</div>
+      <h2>把两个已验证 Pattern 放在一起看，最后只回答一件事：下一条先怎么搭</h2>
+      <p class="muted">先看共同稳定的规律，再看两个代表作分别怎么赢，最后拿几张灵感卡和搭积木区去做下一轮 split test。</p>
+
+      <div class="rule-grid">
+        <article class="rule-card">
+          <strong>先赢 hook</strong>
+          <p>第一秒站不住，后面再好也没人看到。</p>
+        </article>
+        <article class="rule-card">
+          <strong>Hook 不是一句话</strong>
+          <p>`visual + verbal + text` 一起工作，才更容易停住人。</p>
+        </article>
+        <article class="rule-card">
+          <strong>Proof 要看得见</strong>
+          <p>稳定的 proof 是 `show the product + sensory proof`，不是空讲卖点。</p>
+        </article>
+        <article class="rule-card">
+          <strong>最后落到购买路径</strong>
+          <p>variety、sale、shipping 都是在压低下单摩擦。</p>
+        </article>
+      </div>
+
+      <div class="playground-compare-grid">
+        
+            <article class="compare-card">
+              <div class="compare-card-head">
+                <h3>Korea shock + no-dishes relief</h3>
+              </div>
+              <div class="compare-card-video">
+                <video controls preload="metadata" src="videos/7598270519867100429.mp4"></video>
+              </div>
+              <div class="compare-card-points">
+                <div class="point-row"><span>为什么会卖</span><p>先用挑衅 opening 停住人，再用 pouch demo 把新鲜感变成真实产品感，接着把旧方案拍成更烦的对照。</p></div>
+                <div class="point-row"><span>第一秒最该看什么</span><p>更 sharp 的 verbal hook，和更 dramatic 的倒 / 摇 / 试喝动作。</p></div>
+                <div class="point-row"><span>中段最稳的卖点</span><p>不用洗 shaker、on-the-go、比传统蛋白粉更不烦。</p></div>
+                <div class="point-row"><span>结尾为什么能转</span><p>variety / sale / shipping 把购买摩擦压下去。</p></div>
+                <div class="point-row strong"><span>下一轮先测</span><p>先测 verbal hook、visual hook、text hook 的戏剧性。</p></div>
+              </div>
+            </article>
+            
+            <article class="compare-card">
+              <div class="compare-card-head">
+                <h3>Life scene + macro legitimacy + crunch proof</h3>
+              </div>
+              <div class="compare-card-video">
+                <video controls preload="metadata" src="videos/7603181518701202701.mp4"></video>
+              </div>
+              <div class="compare-card-points">
+                <div class="point-row"><span>为什么会卖</span><p>先用具体场景把人带进来，再用 macros 建立合理性，最后用 crunch / flavor 证明它不是无聊蛋白。</p></div>
+                <div class="point-row"><span>第一秒最该看什么</span><p>更清楚的 scene entry，再接更快的 macro proof 或 crunch proof。</p></div>
+                <div class="point-row"><span>中段最稳的卖点</span><p>宏观营养站得住，而且 crunch / flavor 让它不像 boring protein。</p></div>
+                <div class="point-row"><span>结尾为什么能转</span><p>variety / 先试口味 / portable usage 把 first-buy 风险讲清楚。</p></div>
+                <div class="point-row strong"><span>下一轮先测</span><p>先测 scene entry 的清晰度，再测 macro 和 crunch 谁先上。</p></div>
+              </div>
+            </article>
+            
+      </div>
+
+      <div class="idea-mini-grid">
+        
+        <article class="idea-mini">
+          <div class="idea-mini-title">灵感 1</div>
+          <p>把 Korea shock 借给生活场景：先给一个更 sharp 的 verbal hook，再立刻落回真实场景。</p>
+        </article>
+        
+        <article class="idea-mini">
+          <div class="idea-mini-title">灵感 2</div>
+          <p>把 life scene 借给 Korea pattern：保留挑衅 opening，但把“我现在为什么要喝它”说得更具体。</p>
+        </article>
+        
+        <article class="idea-mini">
+          <div class="idea-mini-title">灵感 3</div>
+          <p>同一个 hook，换 proof 顺序：一版先上 macros，一版先上 crunch。</p>
+        </article>
+        
+        <article class="idea-mini">
+          <div class="idea-mini-title">灵感 4</div>
+          <p>同一个骨架，换 first-buy path：一版先讲 variety，一版先讲 sale / shipping。</p>
+        </article>
+        
+      </div>
+
+      <div class="lego-section">
+        <details class="lego-details">
+          <summary>展开看怎么搭积木</summary>
+          <div class="lego-stack">
+            
+            <article class="card lego-card">
+              <div class="eyebrow">搭积木区</div>
+              <h3>Pattern 1：Korea shock + no-dishes relief</h3>
+              <p class="muted">这一条不是每次都重写。真正有效的是保留同一个骨架，再一次只换一个 hook 或 proof 变量。</p>
+              <div class="table-wrap">
+                <table class="lego-table">
+                  <thead>
+                    <tr>
+                      <th class="lego-step">步骤</th>
+                      <th>这一块负责什么</th>
+                      <th>尽量别动的</th>
+                      <th>可以换的变量</th>
+                      <th>真实句子 / 真实做法</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+            <tr>
+              <td class="lego-step">Block 1</td>
+              <td>第一秒停住人</td>
+              <td>Korea comparison 这个挑衅 premise + pouch 立刻出现在画面里。</td>
+              <td>粗口强度、第一句 wording、是倒进袋里还是直接试喝、屏幕字要不要补。</td>
+              <td>“Why the fuck do Koreans do everything better than us?” / “Those fucking Koreans do everything better than us.”</td>
+            </tr>
+            
+            <tr>
+              <td class="lego-step">Block 2</td>
+              <td>马上证明产品怎么用</td>
+              <td>不要空讲，立刻让人看懂它不是普通粉桶。</td>
+              <td>先倒牛奶、先摇袋子、先推近镜头，还是先从袋子里直接喝。</td>
+              <td>pour into pouch / shake / sip / push pouch toward camera</td>
+            </tr>
+            
+            <tr>
+              <td class="lego-step">Block 3</td>
+              <td>把旧方案拍成更烦</td>
+              <td>传统蛋白粉或 shaker bottle 一定要被拍成更差替代品。</td>
+              <td>先打 `hate washing dishes`，还是先打 `on-the-go`，还是先打 `chalky aftertaste`。</td>
+              <td>“if you hate washing dishes” / “if you&#x27;re always on the go” / “does not taste like traditional protein powder”</td>
+            </tr>
+            
+            <tr>
+              <td class="lego-step">Block 4</td>
+              <td>把购买路径讲顺</td>
+              <td>结尾不是空 CTA，而是怎么买更稳。</td>
+              <td>先讲 variety，还是先讲 sale / free shipping / restock。</td>
+              <td>variety pack / free shipping / restock / link below</td>
+            </tr>
+            </tbody>
+                </table>
+              </div>
+            </article>
+            
+            <article class="card lego-card">
+              <div class="eyebrow">搭积木区</div>
+              <h3>Pattern 2：Life scene + macro legitimacy + crunch proof</h3>
+              <p class="muted">这一条也不是每次都想一个新脚本，而是保留同一个说服顺序：先把场景讲清楚，再把产品讲合理，再把它讲好吃。</p>
+              <div class="table-wrap">
+                <table class="lego-table">
+                  <thead>
+                    <tr>
+                      <th class="lego-step">步骤</th>
+                      <th>这一块负责什么</th>
+                      <th>尽量别动的</th>
+                      <th>可以换的变量</th>
+                      <th>真实句子 / 真实做法</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+            <tr>
+              <td class="lego-step">Block 1</td>
+              <td>先把人带进具体时刻</td>
+              <td>开头一定是一个真实场景，不是抽象营养学。</td>
+              <td>训练后、忙乱早餐、healthy fallback meal、Pilates 后、通勤前。</td>
+              <td>“I just worked out...” / “This is what I eat when I don&#x27;t want an actual meal...” / “I just got back from Pilates...”</td>
+            </tr>
+            
+            <tr>
+              <td class="lego-step">Block 2</td>
+              <td>让产品先站住</td>
+              <td>protein / calories / sugar 这类宏观营养要尽早出现。</td>
+              <td>先给 protein，还是先给 calories，还是先把 `not heavy` 放前面。</td>
+              <td>20g protein / 166 calories / 1g sugar / 2.6g fiber</td>
+            </tr>
+            
+            <tr>
+              <td class="lego-step">Block 3</td>
+              <td>把口感讲实</td>
+              <td>crunch / flavor proof 一定要出现，不然它会变成 boring protein。</td>
+              <td>先 chew、先 show crunchy balls、先讲 flavor，还是先讲 freeze hack。</td>
+              <td>crunchy protein balls / tastes like a matcha latte / rich like chocolate ice cream</td>
+            </tr>
+            
+            <tr>
+              <td class="lego-step">Block 4</td>
+              <td>降低第一次下单风险</td>
+              <td>最后一定要把购买路径讲顺。</td>
+              <td>先推 variety、先讲 portable、先讲 why it&#x27;s a staple。</td>
+              <td>try the variety pack first / staple in my household / easy to bring in your bag</td>
+            </tr>
+            </tbody>
+                </table>
+              </div>
+            </article>
+            
+          </div>
+        </details>
+      </div>
     </section>
+
+    
+    <section class="card borrow-section">
+      <div class="eyebrow">别的品也值得借的思路</div>
+      <h2>别的品也值得借的思路：Duo Pack 的 K-pop / snacky / not heavy 这条线</h2>
+      <p class="muted">这不是主 Hero SKU 的已验证 Pattern，但它很值得借。真正值钱的不是 `K-pop` 这两个字本身，而是：理想身材好奇心 + snack 矛盾感 + 挤袋 / crunch 的 snackability proof + `not heavy / cravings` framing。</p>
+      <div class="borrow-summary">
+        <article class="summary-cell">
+          <h3>最值得借的</h3>
+          <ul><li>先用身份 / 理想状态好奇心把人停住，再把产品拍成那个谜题的答案。</li><li>把袋装产品拍得更像 snack / treat，不只是普通液体蛋白。</li><li>把 `not heavy / not bloated / cravings` 这种真实消费时刻的话往前拉。</li></ul>
+        </article>
+        <article class="summary-cell">
+          <h3>不要直接照搬的</h3>
+          <ul><li>不要把 `K-pop` 本身当成万能权威。</li><li>不要把 `snatched` 讲成结果承诺。</li><li>冻过后像甜点的玩法，不一定适合原样搬到 Core 7-Pack。</li></ul>
+        </article>
+      </div>
+      <div class="borrow-grid">
+        
+            <article class="borrow-video-card">
+              <div class="borrow-video-shell">
+                <video controls preload="metadata" src="videos/7601288310471904542.mp4"></video>
+              </div>
+              <div class="borrow-video-meta">
+                <span class="meta-badge">播放 140.1万</span>
+                <span class="meta-badge">日期 2026-01-30</span>
+              </div>
+              <div class="borrow-video-copy">
+                <div class="family-label">K-pop idol + frozen dessert hack</div>
+                <p class="family-opening">Ever wonder how K-pop idols stay so snatched but seem to snack all the time?</p>
+                <p>把 `K-pop idol`、`snack without feeling heavy`、`freeze hack` 三层一起拉满。</p>
+              </div>
+            </article>
+            
+            <article class="borrow-video-card">
+              <div class="borrow-video-shell">
+                <video controls preload="metadata" src="videos/7602398584750886175.mp4"></video>
+              </div>
+              <div class="borrow-video-meta">
+                <span class="meta-badge">播放 21.0万</span>
+                <span class="meta-badge">日期 2026-02-02</span>
+              </div>
+              <div class="borrow-video-copy">
+                <div class="family-label">K-pop + not bloated + customization</div>
+                <p class="family-opening">Ever wonder how K-pop idols stay so snatched but are literally always snacking?</p>
+                <p>更快把问题聚焦到 `without feeling bloated` 和 fill line customization。</p>
+              </div>
+            </article>
+            
+            <article class="borrow-video-card">
+              <div class="borrow-video-shell">
+                <video controls preload="metadata" src="videos/7606447878944378142.mp4"></video>
+              </div>
+              <div class="borrow-video-meta">
+                <span class="meta-badge">播放 11.3万</span>
+                <span class="meta-badge">日期 2026-02-13</span>
+              </div>
+              <div class="borrow-video-copy">
+                <div class="family-label">Idols swear by it + authority close</div>
+                <p class="family-opening">Ever wonder how K-pop idols snack all the time but still stay so snatched?</p>
+                <p>把 authority、prep demo 和 Olive Young close 收得更完整。</p>
+              </div>
+            </article>
+            
+      </div>
+      <p class="borrow-link"><a href="duo-pack.html" target="_blank" rel="noreferrer">看这个品的完整独立分析</a></p>
+    </section>
+    
 
   </div>
   <script>
